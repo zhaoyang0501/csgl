@@ -63,15 +63,27 @@ function AngelMoney(s){
 
 		<div class="main-wrapper">
 			<div class="container-fluid">
+			
+				
+				
 				<div class="row-fluid ">
 					<div class="span12">
-						<div class="content-widgets light-gray">
+						<div class="content-widgets ">
 							<div class="widget-head  bondi-blue" >
 								<h3>个人中心</h3>
 							</div>
 							
 							<div class="widget-container">
-							<form action="${pageContext.request.contextPath}/admin/adminuser/docenter" method="post">
+							
+							<div class="row-fluid">
+								<div class="tab-widget">
+									<ul class="nav nav-tabs" id="myTab2">
+										<li class="active"><a href="#toapprove"><i class="icon-edit"></i> 个人中心</a></li>
+										<li class=""><a href="#approved"><i class="icon-check"></i>密码修改</a></li>
+									</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="toapprove">
+										<form action="${pageContext.request.contextPath}/admin/adminuser/docenter" method="post">
 						
 							<input type="hidden" name="adminuser.id" value="${sessionScope.adminuser.id}">
 							<div class="control-group">
@@ -111,6 +123,16 @@ function AngelMoney(s){
 									<button type="submit" class='btn btn-primary'>修改</button>
 								</div>
 						</form>
+									</div>
+									<div class="tab-pane" id="approved">
+									
+									</div>
+								</div>
+							</div>
+						</div>
+				
+				
+							
 							</div>
 						</div>
 					</div>
