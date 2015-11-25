@@ -19,11 +19,17 @@
 				<div class="content">
 					<div class="controls input-icon">
 						<i class=" icon-user-md"></i>
-						<input type="text" id="username"  name="userName" class="input-block-level" data-placeholder="用户名">
+						<input type="text" id="username"  name="userName" class="input-block-level" data-placeholder="用户名"/>
 					</div>
 					<div class="controls input-icon">
-						<i class=" icon-key"></i><input type="password" id="password" name="password" class="input-block-level" data-placeholder="密码">
+						<i class=" icon-key"></i><input type="password" id="password" name="password" class="input-block-level" data-placeholder="密码"/>
 					</div>
+					<div class="controls input-icon">
+						<i class=" icon-key"></i><input type="password" id="safecode" name="safecode" class="input-block-level" data-placeholder="验证码"/ >
+						<img alt="验证码" src="/csgl/servlet/safecode.ppp">  
+					</div>
+					
+       				 
 					<div class="input-prepend">
 					<label class="remember" for="remember"><input type="checkbox" id="_spring_security_remember_me" name="_spring_security_remember_me" checked="true"/>记住我</label>
 					</div>

@@ -50,8 +50,6 @@ jQuery.adminSeller = {
 						});
 					},
 					"aoColumns" : [ {
-						"mDataProp" : "id"
-					} ,{
 						"mDataProp" : "name"
 					}, {
 						"mDataProp" : "addr"
@@ -66,7 +64,7 @@ jQuery.adminSeller = {
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [6],
+							'aTargets' : [5],
 							'fnRender' : function(oObj, sVal) {
 								return "<button class=\"btn2 btn-info\" onclick=\"$.adminSeller.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改</button>"+
 								 "  <button class=\"btn2 btn-info\" onclick=\"$.adminSeller.deleteSeller("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";

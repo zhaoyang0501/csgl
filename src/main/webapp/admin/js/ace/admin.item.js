@@ -50,8 +50,6 @@ jQuery.adminItem = {
 						});
 					},
 					"aoColumns" : [ {
-						"mDataProp" : "id"
-					}, {
 						"mDataProp" : "name"
 					}, {
 						"mDataProp" : "imgPath"
@@ -67,14 +65,14 @@ jQuery.adminItem = {
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [2],
+							'aTargets' : [1],
 							'fnRender' : function(oObj, sVal) {
 								return "<img title='product' alt='product' src='../upload/"+sVal+"' height=''50' width='50'>";
 							}
 						},
 						
 						{
-							'aTargets' : [4],
+							'aTargets' : [3],
 							'fnRender' : function(oObj, sVal) {
 								
 								var count=parseInt(sVal);
@@ -155,8 +153,6 @@ jQuery.adminItem = {
 						});
 					},
 					"aoColumns" : [ {
-						"mDataProp" : "id"
-					}, {
 						"mDataProp" : "name"
 					}, {
 						"mDataProp" : "imgPath"
@@ -176,7 +172,7 @@ jQuery.adminItem = {
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [7],
+							'aTargets' : [6],
 							'fnRender' : function(oObj, sVal) {
 								if(sVal.length>10)
 									return sVal.substring(0,10)+".....";
@@ -185,7 +181,7 @@ jQuery.adminItem = {
 							}
 						},
 						{
-							'aTargets' : [2],
+							'aTargets' : [1],
 							'fnRender' : function(oObj, sVal) {
 								return "<img title='product' alt='product' src='../upload/"+sVal+"' height=''50' width='50'>";
 							}

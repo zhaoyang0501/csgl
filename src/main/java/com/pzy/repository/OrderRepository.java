@@ -14,5 +14,7 @@ public interface OrderRepository extends PagingAndSortingRepository<Order, Long>
 	public Double findPriceSell(Date b,Date e,Long itemid );
 	@Query(value=" SELECT sum(total_price) FROM  t_order t1 WHERE t1.create_date>=?1 AND t1.create_date<?2 and t1.item=?3 and state='入库'", nativeQuery=true)
 	public Double findPriceBuy(Date b,Date e,Long itemid );
+	@Query(value=" select sum(if(t1.state='出库',t1.total_price,-t1.total_price)) from t_order t1  WHERE t1.create_date>=?1 AND t1.create_date<?2 ", nativeQuery=true)
+	public Double findAvg(Date b,Date e);
 }
 

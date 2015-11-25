@@ -46,6 +46,24 @@ public class AdminUserService {
          Page<AdminUser> result = (Page<AdminUser>) adminUserRepository.findAll(spec, pageRequest);
          return result;
      }
+     public Page<AdminUser> findAll(final int pageNumber, final int pageSize,final String name,final String realname){
+         PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, new Sort(Direction.DESC, "id"));
+        
+         Specification<AdminUser> spec = new Specification<AdminUser>() {
+              public Predicate toPredicate(Root<AdminUser> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+              Predicate predicate = cb.conjunction();
+              if (name != null) {
+                   predicate.getExpressions().add(cb.like(root.get("name").as(String.class), name+"%"));
+              }
+              if (realname != null) {
+                  predicate.getExpressions().add(cb.like(root.get("realname").as(String.class), realname+"%"));
+             }
+              return predicate;
+              }
+         };
+         Page<AdminUser> result = (Page<AdminUser>) adminUserRepository.findAll(spec, pageRequest);
+         return result;
+     }
 	public void delete(Long id){
 	    adminUserRepository.delete(id);
 	}

@@ -10,6 +10,7 @@
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.zh-CN.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$.adminAdminuser.initSearchDataTable();
 		$(".date").datetimepicker({
 			language:  'zh-CN',
 	        weekStart: 1,
@@ -44,6 +45,8 @@
 							<div class="box well form-inline">
 								<span>工号：</span>
 								<input type="text" id="adminuser_name" >
+								<span>姓名：</span>
+								<input type="text" id="realname_" >
 								<a onclick="$.adminAdminuser.initSearchDataTable()"
 									class="btn btn-info" data-loading-text="正在加载..."><i class="icon-search"></i>查询</a>
 							</div>
@@ -54,7 +57,6 @@
 									id="dt_adminuser_view">
 									<thead>
 										<tr>
-											<th >id</th>
 											<th >工号</th>
 											<th >密码</th>
 											<th >备注</th>

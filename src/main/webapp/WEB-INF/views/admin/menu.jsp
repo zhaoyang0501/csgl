@@ -26,6 +26,8 @@
 		<div class="left-secondary-nav tab-content" >
 			<div class="tab-pane active dailyreport" id="dailyreport">
 				<ul id="nav" class="accordion-nav" >
+					<li><a href="${pageContext.request.contextPath}/admin/adminuser/centerdetail"><i class="icon-upload"></i>个人中心 </a></li>
+					
 					<li><a href="${pageContext.request.contextPath}/admin/adminuser/index"><i class="icon-zoom-in"></i>员工管理</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/category/index"><i class="icon-upload"></i> 商品分类管理 </a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/seller/index"><i class="icon-upload"></i> 供应商管理 </a></li>
@@ -35,11 +37,12 @@
 					<li><a href="${pageContext.request.contextPath}/admin/order/outlist"><i class="icon-upload"></i>出库明细 </a></li>
 				
 					<li><a href="${pageContext.request.contextPath}/admin/order/gobuy"><i class="icon-upload"></i>商品入库 </a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/order/sell"><i class="icon-upload"></i>商品出库 </a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/order/sell"><i class="icon-upload"></i>商品销售 </a></li>
 					
 					<li><a href="${pageContext.request.contextPath}/admin/kc/index"><i class="icon-upload"></i>库存管理 </a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/report/sellreport"><i class="icon-upload"></i>销售报表 </a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/report/buyreport"><i class="icon-upload"></i>进货报表 </a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/report/avgreport"><i class="icon-upload"></i>利润表 </a></li>
 					
 					
 					<%-- <c:if test="${sessionScope.adminuser.role1=='yes'}">

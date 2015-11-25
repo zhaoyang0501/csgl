@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.apache.struts2.json.annotations.JSON;
 /***
  *商品
  *
@@ -27,7 +29,7 @@ public class Item  {
 	private Category category;
 
 	
-	
+	@JSON(format="￥#,###.####")     
 	public Double getPrice() {
 		return price;
 	}
@@ -39,7 +41,7 @@ public class Item  {
 	
 	private Integer count;
 	
-	
+  
 	private Double price;
 	public Integer getCount() {
 		return count;
@@ -95,6 +97,7 @@ public class Item  {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
+	@JSON(format="yyyy-MM-dd HH:mm:ss")  
 	public Date getCreateDate() {
 		return createDate;
 	}

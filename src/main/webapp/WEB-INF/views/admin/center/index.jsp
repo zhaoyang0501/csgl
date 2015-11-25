@@ -35,8 +35,8 @@ function AngelMoney(s){
 		});
 	}
 	$(document).ready(function(){
-		if("${tip}" != null && "${tip}" != ""){
-			noty({"text":"${tip}","layout":"top","type":"success","timeout":"2000"});
+		if("${name}" != null && "${name}" != ""){
+			noty({"text":"${name}","layout":"top","type":"success","timeout":"2000"});
 		}
 		$(".date").datetimepicker({
 			language:  'zh-CN',
@@ -67,49 +67,48 @@ function AngelMoney(s){
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>商品销售</h3>
+								<h3>个人中心</h3>
 							</div>
 							
 							<div class="widget-container">
-							<form action="${pageContext.request.contextPath}/admin/order/dosell" method="post">
+							<form action="${pageContext.request.contextPath}/admin/adminuser/docenter" method="post">
+						
+							<input type="hidden" name="adminuser.id" value="${sessionScope.adminuser.id}">
 							<div class="control-group">
-								<label for="title" class="control-label">商品：</label>
+								<label for="name" class="control-label">用户名：</label>
 								<div class="controls">
-									<select id='itemid' name="order.item.id" onchange="fun_getitem()">
-										<c:forEach items="${items}" var="bean">
-												<option value="${bean.id }">${bean.name }</option>
-										</c:forEach>
-									</select>
-									<div style="color: red;display: none" id='itemdetail' >
-									<img  id='itemimg' title="product" alt="product" src="../upload/" height="50" width="50">
-									 库存：<span id='itemcount'></span> </div>
+									<input type="text" name="adminuser.name" value='${sessionScope.adminuser.name}' placeholder="" readonly="readonly">
 								</div>
 							</div>
+							
 							<div class="control-group">
-								<label for="title" class="control-label">客户（会员卡）：</label>
+								<label for="name" class="control-label">密码：</label>
 								<div class="controls">
-										<input type="text" name='order.card'/>
+									<input type="text" name="adminuser.password" id="password" placeholder="" value='${sessionScope.adminuser.password}'>
 								</div>
 							</div>
-							<div class="control-group">
-								<label for="title" class="control-label">数量：</label>
+							<div class="control-group" id='control_project'>
+								<label for="remark" class="control-label">备注：</label>
 								<div class="controls">
-									<input type="text" name='order.count'/>
+									<textarea id="remark" name="adminuser.remark" placeholder="" rows="3">
+										${sessionScope.adminuser.remark}
+									</textarea>
 								</div>
 							</div>
-							<div class="control-group">
-								<label for="title" class="control-label">单价：</label>
-								<div class="controls input-prepend input-append">
-								
-										<span class="add-on">￥</span>
-										<input type="text" name='order.perPrice'  onchange="this.value=AngelMoney(this.value)"/>
-										<span class="add-on">.00</span>
-									</div>
-								
-								
+							<div class="control-group" id='control_project'>
+								<label for="num" class="control-label">姓名：</label>
+								<div class="controls">
+									<input type="text" name="adminuser.realname" id="realname" placeholder="" value='${sessionScope.adminuser.realname}'>
+								</div>
 							</div>
-								<div class="modal-footer center" id="div_footer">
-									<button type="submit" class='btn btn-primary'>售出</button>
+							<div class="control-group" id='control_project'>
+								<label for="tel" class="control-label">电话：</label>
+								<div class="controls">
+									<input type="text" name="adminuser.tel" id="tel" placeholder="" value='${sessionScope.adminuser.tel}'>
+								</div>
+							</div>
+							<div class="modal-footer center" id="div_footer">
+									<button type="submit" class='btn btn-primary'>修改</button>
 								</div>
 						</form>
 							</div>

@@ -47,4 +47,13 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
+	<servlet>  
+    <servlet-name>code</servlet-name>  
+    <servlet-class>com.pzy.util.SafeCode</servlet-class>  
+</servlet>  
+  
+<servlet-mapping>  
+    <servlet-name>code</servlet-name>  
+    <url-pattern>/servlet/safecode.ppp</url-pattern>  
+</servlet-mapping>  
 </web-app>

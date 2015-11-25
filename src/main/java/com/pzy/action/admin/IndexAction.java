@@ -22,6 +22,7 @@ public class IndexAction  extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private String userName;
 	private String  password;
+	private String safecode;
 	private String tip;
 	@Autowired 
 	AdminUserService adminUserService;
@@ -66,6 +67,11 @@ public class IndexAction  extends ActionSupport{
       */
      @Action(value = "gologin", results = { @Result(name = "success", location = "/WEB-INF/views/admin/index.jsp"),@Result(name = "input", location = "/WEB-INF/views/admin/login.jsp") })
      public String gologin(){
+    	String safecodesession=(String) ActionContext.getContext().getSession().get("safecode");
+    	if(!safecodesession.equals(safecode)){
+    		//this.tip="验证码不正确!";
+    		//return LOGIN;
+    	}
     	AdminUser adminUser=adminUserService.login(this.userName, this.password);
     	
     	if(adminUser!=null){
@@ -96,6 +102,13 @@ public class IndexAction  extends ActionSupport{
  	}
  	public void setPassword(String password) {
 		this.password = password;
+	}
+ 	public String getSafecode() {
+		return safecode;
+	}
+
+	public void setSafecode(String safecode) {
+		this.safecode = safecode;
 	}
 }
 

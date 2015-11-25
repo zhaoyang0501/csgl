@@ -72,6 +72,8 @@ public class OrderAction extends ActionSupport {
 		order.setSeller(order.getSeller());
 		order.setState("入库");
 		orderService.save(order);
+		items=itemService.findAll();
+		sellers=serllerService.findAll();
 		this.tip = "入库成功";
 		return SUCCESS;
 	}
@@ -80,6 +82,8 @@ public class OrderAction extends ActionSupport {
 		Item item = this.itemService.find(order.getItem().getId());
 		if(order.getCount()>item.getCount()){
 			tip="库存不足！";
+			items=itemService.findAll();
+			sellers=serllerService.findAll();
 			return SUCCESS;
 		}
 		item.setCount(item.getCount()+order.getCount());
@@ -93,6 +97,8 @@ public class OrderAction extends ActionSupport {
 		order.setState("出库");
 		orderService.save(order);
 		this.tip = "出库成功";
+		items=itemService.findAll();
+		sellers=serllerService.findAll();
 		return SUCCESS;
 	}
 	@Action(value = "gobuy", results = { @Result(name = "success", location = "/WEB-INF/views/admin/buy/index.jsp") })

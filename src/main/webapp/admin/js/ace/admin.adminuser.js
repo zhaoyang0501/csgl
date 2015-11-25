@@ -33,10 +33,17 @@ jQuery.adminAdminuser = {
 					},
 					"fnServerData" : function(sSource, aoData, fnCallback) {
 						var name = $("#adminuser_name").val();
+						var realname = $("#realname_").val();
 						if (!!name) {
 							aoData.push({
 								"name" : "name",
 								"value" : name
+							});
+						}
+						if (!!realname) {
+							aoData.push({
+								"name" : "realname",
+								"value" : realname
 							});
 						}
 						$.ajax({
@@ -50,8 +57,6 @@ jQuery.adminAdminuser = {
 						});
 					},
 					"aoColumns" : [ {
-						"mDataProp" : "id"
-					} ,{
 						"mDataProp" : "name"
 					}, {
 						"mDataProp" : "password"
@@ -68,7 +73,7 @@ jQuery.adminAdminuser = {
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [7],
+							'aTargets' : [6],
 							'fnRender' : function(oObj, sVal) {
 								return "<button class=\"btn2 btn-info\" onclick=\"$.adminAdminuser.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改</button>"+
 								 "  <button class=\"btn2 btn-info\" onclick=\"$.adminAdminuser.deleteAdminuser("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";

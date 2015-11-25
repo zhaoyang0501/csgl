@@ -49,9 +49,7 @@ jQuery.adminCategory = {
 							}
 						});
 					},
-					"aoColumns" : [ {
-						"mDataProp" : "id"
-					} ,{
+					"aoColumns" : [{
 						"mDataProp" : "name"
 					}, {
 						"mDataProp" : "remark"
@@ -62,7 +60,7 @@ jQuery.adminCategory = {
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [4],
+							'aTargets' : [3],
 							'fnRender' : function(oObj, sVal) {
 								return "<button class=\"btn2 btn-info\" onclick=\"$.adminCategory.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改</button>"+
 								 "  <button class=\"btn2 btn-info\" onclick=\"$.adminCategory.deleteCategory("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";

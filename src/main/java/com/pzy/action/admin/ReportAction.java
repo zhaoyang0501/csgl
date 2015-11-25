@@ -2,10 +2,13 @@ package com.pzy.action.admin;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -52,6 +55,10 @@ public class ReportAction extends ActionSupport {
 	public String sellreport() {
 		return SUCCESS;
 	}
+	@Action(value = "avgreport", results = { @Result(name = "success", location = "/WEB-INF/views/admin/report/avg.jsp") })
+	public String avgreport() {
+		return SUCCESS;
+	}
 	@Action(value = "buyreport", results = { @Result(name = "success", location = "/WEB-INF/views/admin/report/buy.jsp") })
 	public String buyreport() {
 		return SUCCESS;
@@ -60,6 +67,24 @@ public class ReportAction extends ActionSupport {
 	public String sellerreport() {
 		return SUCCESS;
 	}
+	@Action(value = "avgreportlist", results = { @Result(name = "success", type = "json") }, params = {
+			"contentType", "text/html" })
+	public String avgreportlist() {
+		Integer count=end.getMonth()-begain.getMonth();
+		List<String> dates=new ArrayList<String>();
+		List<Double> avgs=new ArrayList<Double>();
+		for(int i=0;i<=count;i++){
+			java.util.Date b=DateUtils.addMonths( DateUtils.truncate(begain,  Calendar.MONTH), i);
+			java.util.Date e=DateUtils.addMonths( DateUtils.truncate(begain,  Calendar.MONTH), i+1);
+			dates.add(DateFormatUtils.format(b, "yyyy年MM"));
+			avgs.add(orderService.findAvg(b, e)==null?0:orderService.findAvg(b, e));
+		}
+		resultMap.put("dates", dates);
+		resultMap.put("avgs", avgs);
+		resultMap.put("sEcho", sEcho);
+		return SUCCESS;
+	}
+	
 	@Action(value = "sellreportlist", results = { @Result(name = "success", type = "json") }, params = {
 			"contentType", "text/html" })
 	public String sellreportlist() {

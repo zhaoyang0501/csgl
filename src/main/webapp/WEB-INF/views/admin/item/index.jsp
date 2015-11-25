@@ -10,6 +10,7 @@
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.zh-CN.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$.adminItem.initSearchDataTable();
 		$(".date").datetimepicker({
 			language:  'zh-CN',
 	        weekStart: 1,
@@ -57,7 +58,6 @@
 									id="dt_table_view">
 									<thead>
 										<tr>
-											<th >id</th>
 											<th >商品图片</th>
 											<th >名称</th>
 											<th >分类</th>

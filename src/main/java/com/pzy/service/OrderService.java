@@ -105,4 +105,7 @@ public class OrderService {
 	public Double findPricesell(Date b,Date e,Long itemid){
 		return this.orderRepository.findPriceSell(b, e, itemid);
 	}
+	public Double findAvg(Date b,Date e){
+		return this.orderRepository.findAvg(b, e);
+	}
 }

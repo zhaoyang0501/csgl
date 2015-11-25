@@ -29,6 +29,7 @@ public class AdminUserAction extends ActionSupport {
 	private Integer iDisplayLength = 10;
 	private Map<String, Object> resultMap = new HashMap<String, Object>();
 	private String name;
+	private String realname;
 	private Long id;
 	private AdminUser adminuser;
 	private List<AdminUser> adminUsers;
@@ -36,6 +37,24 @@ public class AdminUserAction extends ActionSupport {
 	@Autowired
 	private AdminUserService adminUserService;
 	
+	@Action(value = "centerdetail", results = { @Result(name = "success", location = "/WEB-INF/views/admin/center/index.jsp") })
+	public String center() {
+		return SUCCESS;
+	}
+	
+	@Action(value = "docenter", results = { @Result(name = "success", location = "/WEB-INF/views/admin/center/index.jsp") })
+	public String docenter() {
+		AdminUser bean = adminUserService.find(adminuser.getId());
+		bean.setRemark(adminuser.getRemark());
+		bean.setRealname(adminuser.getRealname());
+		bean.setTel(adminuser.getTel());
+		bean.setRemark(adminuser.getRemark());
+		bean.setPassword(adminuser.getPassword());
+		adminUserService.save(bean);
+		resultMap.put("state", "success");
+		this.name = "修改成功";
+		return SUCCESS;
+	}
 	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/adminuser/index.jsp") })
 	public String index() {
 		return SUCCESS;
@@ -49,7 +68,7 @@ public class AdminUserAction extends ActionSupport {
 	public String list() {
 		int pageNumber = (int) (iDisplayStart / iDisplayLength) + 1;
 		int pageSize = iDisplayLength;
-		Page<AdminUser> list = adminUserService.findAll(pageNumber, pageSize,name);
+		Page<AdminUser> list = adminUserService.findAll(pageNumber, pageSize,name,realname);
 		resultMap.put("aaData", list.getContent());
 		resultMap.put("iTotalRecords", list.getTotalElements());
 		resultMap.put("iTotalDisplayRecords", list.getTotalElements());
@@ -180,5 +199,11 @@ public class AdminUserAction extends ActionSupport {
 
 	public void setAdminUsers(List<AdminUser> adminUsers) {
 		this.adminUsers = adminUsers;
+	}
+	public String getRealname() {
+		return realname;
+	}
+	public void setRealname(String realname) {
+		this.realname = realname;
 	}
 }
