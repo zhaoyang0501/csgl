@@ -9,7 +9,9 @@
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.zh-CN.js"></script>
 <script type="text/javascript">
+
 	$(document).ready(function(){
+		$.adminOrder.initSearchDataTable();
 		$(".date").datetimepicker({
 			language:  'zh-CN',
 	        weekStart: 1,

@@ -84,7 +84,6 @@ function AngelMoney(s){
 								<div class="tab-content">
 									<div class="tab-pane active" id="toapprove">
 										<form action="${pageContext.request.contextPath}/admin/adminuser/docenter" method="post">
-						
 							<input type="hidden" name="adminuser.id" value="${sessionScope.adminuser.id}">
 							<div class="control-group">
 								<label for="name" class="control-label">用户名：</label>
@@ -93,12 +92,7 @@ function AngelMoney(s){
 								</div>
 							</div>
 							
-							<div class="control-group">
-								<label for="name" class="control-label">密码：</label>
-								<div class="controls">
-									<input type="text" name="adminuser.password" id="password" placeholder="" value='${sessionScope.adminuser.password}'>
-								</div>
-							</div>
+							
 							<div class="control-group" id='control_project'>
 								<label for="remark" class="control-label">备注：</label>
 								<div class="controls">
@@ -126,6 +120,33 @@ function AngelMoney(s){
 									</div>
 									<div class="tab-pane" id="approved">
 									
+									
+									<form action="${pageContext.request.contextPath}/admin/adminuser/docenterpassword" method="post">
+							<input type="hidden" name="adminuser.id" value="${sessionScope.adminuser.id}">
+							<div class="control-group">
+								<label for="name" class="control-label">旧密码：</label>
+								<div class="controls">
+									<input type="password" name="oldpassword" id="password" placeholder="" value=''>
+								</div>
+							</div>
+							
+							
+							<div class="control-group">
+								<label for="name" class="control-label">新密码：</label>
+								<div class="controls">
+									<input type="password" name="newpassword" id="password" placeholder="" value=''>
+								</div>
+							</div>
+							<div class="control-group">
+								<label for="name" class="control-label">新密码确认：</label>
+								<div class="controls">
+									<input type="password" name="newpasswordtwo" id="password" placeholder="" value=''>
+								</div>
+							</div>
+							<div class="modal-footer center" id="div_footer">
+									<button type="submit" class='btn btn-primary'>修改</button>
+								</div>
+						</form>
 									</div>
 								</div>
 							</div>

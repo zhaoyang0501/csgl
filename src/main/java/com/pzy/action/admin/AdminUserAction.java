@@ -12,6 +12,7 @@ import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pzy.entity.AdminUser;
 import com.pzy.service.AdminUserService;
@@ -33,7 +34,9 @@ public class AdminUserAction extends ActionSupport {
 	private Long id;
 	private AdminUser adminuser;
 	private List<AdminUser> adminUsers;
-	
+	private String oldpassword;
+	private String newpassword;
+	private String newpasswordtwo;
 	@Autowired
 	private AdminUserService adminUserService;
 	
@@ -49,10 +52,29 @@ public class AdminUserAction extends ActionSupport {
 		bean.setRealname(adminuser.getRealname());
 		bean.setTel(adminuser.getTel());
 		bean.setRemark(adminuser.getRemark());
-		bean.setPassword(adminuser.getPassword());
 		adminUserService.save(bean);
+		ActionContext.getContext().getSession().put("adminuser",bean);
 		resultMap.put("state", "success");
 		this.name = "修改成功";
+		return SUCCESS;
+	}
+	@Action(value = "docenterpassword", results = { @Result(name = "success", location = "/WEB-INF/views/admin/center/index.jsp") })
+	public String docenterpassword() {
+		AdminUser  user=(AdminUser)ActionContext.getContext().getSession().get("adminuser");
+		if(!this.oldpassword.equals(user.getPassword())){
+			this.name = "原始密码输入不正确";
+			return SUCCESS;
+		}
+		if(!this.newpassword.equals(this.newpasswordtwo)){
+			this.name = "两次输入密码不正确";
+			return SUCCESS;
+		}
+		AdminUser bean = adminUserService.find(adminuser.getId());
+		bean.setPassword(newpassword);
+		adminUserService.save(bean);
+		ActionContext.getContext().getSession().put("adminuser",bean);
+		resultMap.put("state", "success");
+		this.name = "密码修改成功";
 		return SUCCESS;
 	}
 	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/adminuser/index.jsp") })
@@ -205,5 +227,29 @@ public class AdminUserAction extends ActionSupport {
 	}
 	public void setRealname(String realname) {
 		this.realname = realname;
+	}
+
+	public String getOldpassword() {
+		return oldpassword;
+	}
+
+	public void setOldpassword(String oldpassword) {
+		this.oldpassword = oldpassword;
+	}
+
+	public String getNewpassword() {
+		return newpassword;
+	}
+
+	public void setNewpassword(String newpassword) {
+		this.newpassword = newpassword;
+	}
+
+	public String getNewpasswordtwo() {
+		return newpasswordtwo;
+	}
+
+	public void setNewpasswordtwo(String newpasswordtwo) {
+		this.newpasswordtwo = newpasswordtwo;
 	}
 }

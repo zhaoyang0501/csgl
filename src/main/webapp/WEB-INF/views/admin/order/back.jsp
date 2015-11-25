@@ -9,31 +9,23 @@
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.zh-CN.js"></script>
 <script type="text/javascript">
-function AngelMoney(s){
-	   if(/[^0-9\.]/.test(s)) return "不是数字！";
-	   s=s.replace(/^(\d*)$/,"$1.");
-	   s=(s+"00").replace(/(\d*\.\d\d)\d*/,"$1");
-	   s=s.replace(".",",");
-	   var re=/(\d)(\d{3},)/;
-	   while(re.test(s))
-	           s=s.replace(re,"$1,$2");
-	   s=s.replace(/,(\d\d)$/,".$1");
-	   return "" + s.replace(/^\./,"0.")
-	}
-	function fun_getitem(){
-		$.ajax({
-			type : "POST",
-			url : $.ace.getContextPath() + "/admin/item/get",
-			data:{
-				"id":$("#itemid").val()
-			},
-			success : function(json) {
-				$("#itemimg").attr("src","../upload/"+json.resultMap.object.imgPath);
-				$("#itemcount").html(json.resultMap.object.count+"件");
-				$("#itemdetail").show();
-			}
-		});
-	}
+function fun_query(){
+	$.ajax({
+		type : "POST",
+		url : $.ace.getContextPath() + "/admin/order/get",
+		data:{
+			"id":$("#orderid").val()
+		},
+		success : function(json) {
+			$("#itemname").html(json.resultMap.orderSub.item.name);
+			$("#seller").html(json.resultMap.orderSub.seller.name);
+			$("#count").html(json.resultMap.orderSub.count);
+			$("#price").html(json.resultMap.orderSub.totalPrice);
+			$("#itemdetail").show();
+		}
+	});
+}
+
 	$(document).ready(function(){
 		if("${tip}" != null && "${tip}" != ""){
 			noty({"text":"${tip}","layout":"top","type":"success","timeout":"2000"});
@@ -67,48 +59,42 @@ function AngelMoney(s){
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>商品销售</h3>
+								<h3>退货处理</h3>
 							</div>
 							
 							<div class="widget-container">
-							<form action="${pageContext.request.contextPath}/admin/order/dosell" method="post">
+							<form action="${pageContext.request.contextPath}/admin/order/doback" method="post">
 							<div class="control-group">
-								<label for="title" class="control-label">商品：</label>
+								<label for="title" class="control-label">输入需要退货的单据号查询：</label>
 								<div class="controls">
-									<select id='itemid' name="order.item.id" onchange="fun_getitem()">
-										<c:forEach items="${items}" var="bean">
-												<option value="${bean.id }">${bean.name }</option>
-										</c:forEach>
-									</select>
-									<div style="color: red;display: none" id='itemdetail' >
-									<img  id='itemimg' title="product" alt="product" src="../upload/" height="50" width="50">
-									 库存：<span id='itemcount'></span> </div>
+									<input type="text" name='order.id' id='orderid'/>
+									<a onclick="fun_query()"
+									class="btn btn-info" data-loading-text="正在加载..."><i class="icon-search"></i>查询</a>
 								</div>
 							</div>
 							<div class="control-group">
-								<label for="title" class="control-label">客户（会员卡）：</label>
+								<label for="title" class="control-label">商品名称：<span id='itemname'></span></label>
+							</div>
+							<div class="control-group">
+								<label for="title" class="control-label">供应商：<span id='seller'></span></label>
+							</div>
+							<div class="control-group">
+								<label for="title" class="control-label">数量：<span id='count'></span></label>
 								<div class="controls">
-										<input type="text" name='order.card'/>
+									
 								</div>
 							</div>
 							<div class="control-group">
-								<label for="title" class="control-label">数量：</label>
-								<div class="controls">
-									<input type="text" name='order.count'/>
-								</div>
+								<label for="title" class="control-label">总价：<span id='price'></span></label>
 							</div>
 							<div class="control-group">
-								<label for="title" class="control-label">单价：</label>
-								<div class="controls input-prepend input-append">
-								
-										<span class="add-on">￥</span>
-										<input style="width: 176px" type="text" name='order.perPrice'  onchange="this.value=AngelMoney(this.value)"/>
-									</div>
-								
-								
+								<label for="title" class="control-label">退货说明：</label>
+								<div class="controls">
+									<textarea name='name' rows="3" cols=""></textarea>
+								</div>
 							</div>
 								<div class="modal-footer center" id="div_footer">
-									<button type="submit" class='btn btn-primary'>售出</button>
+									<button type="submit" class='btn btn-primary'>确定</button>
 								</div>
 						</form>
 							</div>

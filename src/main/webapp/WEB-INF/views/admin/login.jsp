@@ -25,7 +25,7 @@
 						<i class=" icon-key"></i><input type="password" id="password" name="password" class="input-block-level" data-placeholder="密码"/>
 					</div>
 					<div class="controls input-icon">
-						<i class=" icon-key"></i><input type="password" id="safecode" name="safecode" class="input-block-level" data-placeholder="验证码"/ >
+						<i class=" icon-key"></i><input type="text" id="safecode" name="safecode" class="input-block-level" data-placeholder="验证码"/ >
 						<img alt="验证码" src="/csgl/servlet/safecode.ppp">  
 					</div>
 					

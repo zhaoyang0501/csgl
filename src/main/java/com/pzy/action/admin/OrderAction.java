@@ -50,7 +50,10 @@ public class OrderAction extends ActionSupport {
 	private ItemService  itemService;
 	@Autowired
 	private SellerService serllerService;
-
+	@Action(value = "back", results = { @Result(name = "success", location = "/WEB-INF/views/admin/order/back.jsp") })
+	public String back() {
+		return SUCCESS;
+	}
 	@Action(value = "inlist", results = { @Result(name = "success", location = "/WEB-INF/views/admin/order/inlist.jsp") })
 	public String index() {
 		return SUCCESS;
@@ -59,6 +62,17 @@ public class OrderAction extends ActionSupport {
 	public String outlist() {
 		return SUCCESS;
 	}
+	@Action(value = "doback", results = { @Result(name = "success", location = "/WEB-INF/views/admin/order/back.jsp") })
+	public String doback() {
+		Order order1 = orderService.find(order.getId());
+		order1.setState("退货");
+		orderService.save(order1);
+		resultMap.put("state", "success");
+		resultMap.put("msg", "退货成功");
+		this.tip = "退货成功";
+		return SUCCESS;
+	}
+	
 	@Action(value = "dobuy", results = { @Result(name = "success", location = "/WEB-INF/views/admin/buy/index.jsp") })
 	public String dobuy() {
 		Item item = this.itemService.find(order.getItem().getId());
