@@ -77,7 +77,7 @@ jQuery.adminOrder = {
 					}, {
 						"mDataProp" : "count"
 					}, {
-						"mDataProp" : "item.price"
+						"mDataProp" : "perPrice"
 					}, {
 						"mDataProp" : "totalPrice"
 					}, {
@@ -188,7 +188,7 @@ jQuery.adminOrder = {
 					}, {
 						"mDataProp" : "count"
 					}, {
-						"mDataProp" : "item.price"
+						"mDataProp" : "perPrice"
 					}, {
 						"mDataProp" : "totalPrice"
 					}, {

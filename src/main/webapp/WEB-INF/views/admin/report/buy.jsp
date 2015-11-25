@@ -8,6 +8,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/falgun/bootbox.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="${pageContext.request.contextPath}/js/echart/echarts-all.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".date").datetimepicker({
@@ -22,6 +23,65 @@
 			forceParse: 0
 	    });
 	});
+	
+	function fun_query(){
+		$.ajax({
+			type : "POST",
+			url : $.ace.getContextPath() + "/admin/report/sellreportlist",
+			data:{
+				"begain":$("#begain").val(),
+				"end":$("#end").val()
+			},
+			success : function(json) {
+				 option = {
+						    title : {
+						        text: '进货总价'
+						    },
+						    tooltip : {
+						        trigger: 'axis'
+						    },
+						    toolbox: {
+						        show : true,
+						        feature : {
+						            mark : {show: true},
+						            dataView : {show: true, readOnly: false},
+						            magicType : {show: true, type: ['line', 'bar']},
+						            restore : {show: true},
+						            saveAsImage : {show: true}
+						        }
+						    },
+						    calculable : true,
+						    xAxis : [
+						        {
+						            type : 'category',
+						            data : json.resultMap.dates
+						        }
+						    ],
+						    yAxis : [
+						        {
+						            type : 'value'
+						        }
+						    ],
+						    series : [
+						        {
+						            name:'总价',
+						            type:'bar',
+						            data:json.resultMap.buys,
+						            markPoint : {
+						                data : [
+						                    {type : 'max', name: '最大值'},
+						                    {type : 'min', name: '最小值'}
+						                ]
+						            }
+						        }
+						    ]
+						};
+				 var tmp_report = echarts.init(document.getElementById('report')); 
+				 tmp_report.setOption(option);     
+			}
+		});	
+		                
+	}
 </script>
 </head>
 <body>
@@ -39,43 +99,26 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>进货明细</h3>
+								<h3>销售报表</h3>
 							</div>
 							<div class="box well form-inline">
 								<span>日期起：</span>
 								<div class="input-append date">
-									 <input id="begain" style="width:80px;" type="text" value="" readonly="readonly">
+									 <input id="begain" style="width:80px;" type="text" value="2015-01-01" readonly="readonly">
 									 <span class="add-on"><i class="icon-th"></i></span>
 								</div>
 								<span>日期止：</span>
 								<div class="input-append date">
-									 <input id="end" style="width:80px;" type="text" value="" readonly="readonly">
+									 <input id="end" style="width:80px;" type="text" value="2016-01-01" readonly="readonly">
 									 <span class="add-on"><i class="icon-th"></i></span>
 								</div>
-								<input type="hidden" id="state" value="入库"/>
-								<a onclick="$.adminOrder.initSearchDataTable()"
+								<input type="hidden" id="state" value="出库"/>
+								<a onclick="fun_query()"
 									class="btn btn-info" data-loading-text="正在加载..."><i class="icon-search"></i>查询</a>
 							</div>
 							<div class="widget-container">
 								
-									<table class="responsive table table-striped table-bordered"
-									id="dt_order_view">
-									<thead>
-										<tr>
-											<th >流水号</th>
-											<th >创建日期</th>
-											<th >供应商</th>
-											<th >操作人</th>
-											<th >商品</th>
-											<th >数量</th>
-											<th >单价</th>
-											<th >总价</th>
-											<th >状态</th>
-										</tr>
-									</thead>
-									<tbody>
-									</tbody>
-								</table>
+								<div id="report" style="width: 1000px;height: 400px;"></div>
 							</div>
 						</div>
 					</div>

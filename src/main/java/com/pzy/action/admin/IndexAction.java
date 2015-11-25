@@ -29,6 +29,15 @@ public class IndexAction  extends ActionSupport{
 	 * 后台登录首页
 	 * @return
 	 */
+	@Action(value = "/kc/index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/kc/index.jsp") })
+     public String kcindex(){
+		return SUCCESS;
+	}
+          
+	/***
+	 * 后台登录首页
+	 * @return
+	 */
 	@Action(value = "/adminindex", results = { @Result(name = "success", location = "/WEB-INF/views/admin/index.jsp") })
      public String index(){
           return SUCCESS;

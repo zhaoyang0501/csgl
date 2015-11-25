@@ -101,11 +101,20 @@ public class ItemAction extends ActionSupport {
 			newitem.setPrice(item.getPrice());
 			newitem.setRemark(item.getRemark());
 			newitem.setScore(item.getScore());
-			newitem.setSeller(item.getSeller());
 			itemService.save(newitem);
 		}
 		
 		
+		sellers = sellerService.findAll();
+		categorys = categoryService.findCategorys();
+		tip = "操作成功！";
+		return SUCCESS;
+	}
+	@Action(value = "savekc", results = { @Result(name = "success", location = "/WEB-INF/views/admin/item/index.jsp") })
+	public String savekc() throws Exception {
+		Item newitem=itemService.find(item.getId());
+		newitem.setCount(item.getCount());
+		itemService.save(newitem);
 		sellers = sellerService.findAll();
 		categorys = categoryService.findCategorys();
 		tip = "操作成功！";

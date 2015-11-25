@@ -30,6 +30,13 @@ public class Order {
 	private String state;
 	private String addr;
 	private String card;
+	private Double perPrice;
+	public Double getPerPrice() {
+		return perPrice;
+	}
+	public void setPerPrice(Double perPrice) {
+		this.perPrice = perPrice;
+	}
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Seller seller;
 	public Seller getSeller() {

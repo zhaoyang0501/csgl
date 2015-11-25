@@ -95,7 +95,7 @@ public class AdminUserAction extends ActionSupport {
 		bean.setJob(adminuser.getJob());
 		bean.setTel(adminuser.getTel());
 		bean.setRemark(adminuser.getRemark());
-		bean.setRemark(adminuser.getRemark());
+		bean.setPassword(adminuser.getPassword());
 		bean.setRole1(adminuser.getRole1());
 		bean.setRole2(adminuser.getRole2());
 		bean.setRole3(adminuser.getRole3());

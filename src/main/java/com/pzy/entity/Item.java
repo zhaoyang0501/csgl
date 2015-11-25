@@ -26,8 +26,7 @@ public class Item  {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Seller seller;
+	
 	
 	public Double getPrice() {
 		return price;
@@ -36,16 +35,6 @@ public class Item  {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-
-	
-	public Seller getSeller() {
-		return seller;
-	}
-
-	public void setSeller(Seller seller) {
-		this.seller = seller;
-	}
-
 	private Date createDate;
 	
 	private Integer count;

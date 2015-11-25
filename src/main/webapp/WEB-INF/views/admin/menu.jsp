@@ -37,11 +37,10 @@
 					<li><a href="${pageContext.request.contextPath}/admin/order/gobuy"><i class="icon-upload"></i>商品入库 </a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/order/sell"><i class="icon-upload"></i>商品出库 </a></li>
 					
-					<li><a href="${pageContext.request.contextPath}/admin/sell"><i class="icon-upload"></i>库存管理 </a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/report/sell"><i class="icon-upload"></i>销售报表 </a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/report/buy"><i class="icon-upload"></i>进货报表 </a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/report/buy"><i class="icon-upload"></i>员工销售报表</a></li>
-			
+					<li><a href="${pageContext.request.contextPath}/admin/kc/index"><i class="icon-upload"></i>库存管理 </a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/report/sellreport"><i class="icon-upload"></i>销售报表 </a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/report/buyreport"><i class="icon-upload"></i>进货报表 </a></li>
+					
 					
 					<%-- <c:if test="${sessionScope.adminuser.role1=='yes'}">
 						<li><a href="${pageContext.request.contextPath}/admin/user/index"><i class="icon-pencil"></i> 用户管理</a></li>

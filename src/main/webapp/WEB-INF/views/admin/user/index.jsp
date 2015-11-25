@@ -96,7 +96,7 @@
 							<div class="control-group" id='control_project'>
 								<label for="password" class="control-label">密码：</label>
 								<div class="controls">
-									<input type="password" id='password' placeholder="">
+									<input type="password" name='password' placeholder="">
 								</div>
 							</div>
 							<div class="control-group" id='control_projectStep'>

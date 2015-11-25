@@ -72,7 +72,7 @@
 							<div class="control-group">
 								<label for="title" class="control-label">单价：</label>
 								<div class="controls">
-									<input type="text" name='order.price'/>
+									<input type="text" name='order.perPrice'/>
 								</div>
 							</div>
 								<div class="modal-footer center" id="div_footer">

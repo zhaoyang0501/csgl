@@ -42,7 +42,7 @@
 								<h3>用户管理</h3>
 							</div>
 							<div class="box well form-inline">
-								<span>用户名：</span>
+								<span>工号：</span>
 								<input type="text" id="adminuser_name" >
 								<a onclick="$.adminAdminuser.initSearchDataTable()"
 									class="btn btn-info" data-loading-text="正在加载..."><i class="icon-search"></i>查询</a>

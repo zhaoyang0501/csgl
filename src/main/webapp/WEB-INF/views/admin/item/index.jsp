@@ -61,7 +61,6 @@
 											<th >商品图片</th>
 											<th >名称</th>
 											<th >分类</th>
-											<th >供应商</th>
 											<th >库存</th>
 											<th >价格</th>
 											<th >上传时间</th>
@@ -117,17 +116,6 @@
 									</select>
 								</div>
 							</div>
-							<div class="control-group" id='control_project'>
-								<label for="category" class="control-label">供应商：</label>
-								<div class="controls">
-									<select id='seller' name='item.seller.id'>
-											<c:forEach items="${sellers }" var="bean">
-												<option value="${bean.id }">${bean.name }</option>
-											</c:forEach>
-									</select>
-								</div>
-							</div>
-							
 							<div class="control-group">
 								<label for="name" class="control-label">库存：</label>
 								<div class="controls">

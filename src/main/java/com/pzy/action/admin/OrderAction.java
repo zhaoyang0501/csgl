@@ -85,6 +85,7 @@ public class OrderAction extends ActionSupport {
 		}
 		item.setCount(item.getCount()+order.getCount());
 		itemService.save(item);
+		
 		order.setTotalPrice(item.getPrice() * order.getCount());
 		order.setCreateDate(new Date(System.currentTimeMillis()));
 		AdminUser user = (AdminUser) ServletActionContext.getRequest().getSession().getAttribute("adminuser");

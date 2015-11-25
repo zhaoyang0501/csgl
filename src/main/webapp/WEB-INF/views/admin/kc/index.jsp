@@ -88,42 +88,17 @@
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="form-container grid-form form-background left-align form-horizontal">
-						 <form id='_form' action="${pageContext.request.contextPath}/admin/item/save"   enctype="multipart/form-data" method="post">
+						 <form id='_form' action="${pageContext.request.contextPath}/admin/item/savekc"   enctype="multipart/form-data" method="post">
 							<input type="hidden" id="item.id" name='item.id' value="">
-							<div class="control-group">
-								<label for="name" class="control-label">商品图片：</label>
-								<div class="controls">
-									<input type="file" name="imgPath" value="" placeholder="">
-								</div>
-							</div>
 							
 							<div class="control-group">
 								<label for="name" class="control-label">商品名称：</label>
 								<div class="controls">
-									<input type="text" name="item.name" value="" placeholder="">
+									<input type="text" readonly="readonly" name="item.name" value="" placeholder="" >
 								</div>
 							</div>
 							
-							<div class="control-group" id='control_project'>
-								<label for="category" class="control-label">分类：</label>
-								<div class="controls">
-									<select id='category' name='item.category.id'>
-											<c:forEach items="${categorys }" var="bean">
-												<option value="${bean.id }">${bean.name }</option>
-											</c:forEach>
-									</select>
-								</div>
-							</div>
-							<div class="control-group" id='control_project'>
-								<label for="category" class="control-label">供应商：</label>
-								<div class="controls">
-									<select id='seller' name='item.seller.id'>
-											<c:forEach items="${sellers }" var="bean">
-												<option value="${bean.id }">${bean.name }</option>
-											</c:forEach>
-									</select>
-								</div>
-							</div>
+							
 							
 							<div class="control-group">
 								<label for="name" class="control-label">库存：</label>
@@ -131,21 +106,6 @@
 									<input type="text" name="item.count" value="" placeholder="">
 								</div>
 							</div>
-							<div class="control-group">
-								<label for="name" class="control-label">价格：</label>
-								<div class="controls">
-									<input type="text" name="item.price" value="" placeholder="">
-								</div>
-							</div>
-							
-							<div class="control-group" id='control_project'>
-								<label for="remark" class="control-label">简介：</label>
-								<div class="controls">
-									<textarea name="item.remark" placeholder="" rows="3">
-									</textarea>
-								</div>
-							</div>
-							
 							
 						</form>
 					</div>

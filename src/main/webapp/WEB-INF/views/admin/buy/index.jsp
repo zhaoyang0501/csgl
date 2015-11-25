@@ -62,7 +62,7 @@
 								<div class="controls">
 									<select name="order.seller.id">
 										<c:forEach items="${sellers}" var="bean">
-												<option value="${bean.name }">${bean.id }</option>
+												<option value="${bean.id }">${bean.name }</option>
 										</c:forEach>
 									</select>
 								</div>
@@ -76,7 +76,7 @@
 							<div class="control-group">
 								<label for="title" class="control-label">单价：</label>
 								<div class="controls">
-									<input type="text" name='order.price'/>
+									<input type="text" name='order.perPrice'/>
 								</div>
 							</div>
 								<div class="modal-footer center" id="div_footer">

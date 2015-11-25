@@ -67,15 +67,6 @@ jQuery.adminItem = {
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [6],
-							'fnRender' : function(oObj, sVal) {
-								if(sVal.length>10)
-									return sVal.substring(0,10)+".....";
-								else 
-									return sVal;
-							}
-						},
-						{
 							'aTargets' : [2],
 							'fnRender' : function(oObj, sVal) {
 								return "<img title='product' alt='product' src='../upload/"+sVal+"' height=''50' width='50'>";
@@ -96,10 +87,9 @@ jQuery.adminItem = {
 							}
 						},
 						{
-							'aTargets' : [9],
+							'aTargets' : [6],
 							'fnRender' : function(oObj, sVal) {
-								return "<button class=\"btn2 btn-info\" onclick=\"$.adminItem.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改</button>"+
-								 "  &nbsp;<button class=\"btn2 btn-info\" onclick=\"$.adminItem.deleteit("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
+								return "<button class=\"btn2 btn-info\" onclick=\"$.adminItem.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改库存</button>";
 							}
 						},
 					 {
@@ -173,8 +163,6 @@ jQuery.adminItem = {
 					}, {
 						"mDataProp" : "category.name"
 					}, {
-						"mDataProp" : "seller.name"
-					}, {
 						"mDataProp" : "count"
 					}, {
 						"mDataProp" : "price"
@@ -188,7 +176,7 @@ jQuery.adminItem = {
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [8],
+							'aTargets' : [7],
 							'fnRender' : function(oObj, sVal) {
 								if(sVal.length>10)
 									return sVal.substring(0,10)+".....";
@@ -204,7 +192,7 @@ jQuery.adminItem = {
 						},
 						
 						{
-							'aTargets' : [5],
+							'aTargets' : [4],
 							'fnRender' : function(oObj, sVal) {
 								
 								var count=parseInt(sVal);
@@ -217,7 +205,7 @@ jQuery.adminItem = {
 							}
 						},
 						{
-							'aTargets' : [9],
+							'aTargets' : [8],
 							'fnRender' : function(oObj, sVal) {
 								return "<button class=\"btn2 btn-info\" onclick=\"$.adminItem.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改</button>"+
 								 "  &nbsp;<button class=\"btn2 btn-info\" onclick=\"$.adminItem.deleteit("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
