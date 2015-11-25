@@ -109,7 +109,7 @@
 								</div>
 								<span>日期止：</span>
 								<div class="input-append date">
-									 <input id="end" style="width:80px;" type="text" value="2016-01-01" readonly="readonly">
+									 <input id="end" style="width:80px;" type="text" value="2015-11-01" readonly="readonly">
 									 <span class="add-on"><i class="icon-th"></i></span>
 								</div>
 								<input type="hidden" id="state" value="出库"/>

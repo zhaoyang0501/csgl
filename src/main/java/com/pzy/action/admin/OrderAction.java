@@ -23,7 +23,6 @@ import com.pzy.service.ItemService;
 import com.pzy.service.OrderService;
 import com.pzy.service.SellerService;
 /***
- * 订单管理
  * @author 263608237@qq.com
  *
  */
@@ -139,37 +138,7 @@ public class OrderAction extends ActionSupport {
 		resultMap.put("sEcho", sEcho);
 		return SUCCESS;
 	}
-	/***
-	 * 点击发货按钮
-	 * @return
-	 */
-	@Action(value = "approveOk", results = { @Result(name = "success", type = "json") }, params = {
-			"contentType", "text/html" })
-	public String approveOk() {
-		Order order = orderService.find(id);
-		order.setState("已发货");
-		orderService.save(order);
-		resultMap.put("state", "success");
-		resultMap.put("msg", "发货成功");
-		return SUCCESS;
-	}
-	/***
-	 * 点击审核退回
-	 * @return
-	 */
-	@Action(value = "approveNotOk", results = { @Result(name = "success", type = "json") }, params = {
-			"contentType", "text/html" })
-	public String approveNotOk() {
-		Order order = orderService.find(id);
-		order.setState("审核不通过");
-		Item item=order.getItem();
-		item.setCount(item.getCount()+1);
-		itemService.save(item);
-		orderService.save(order);
-		resultMap.put("state", "success");
-		resultMap.put("msg", "退回成功");
-		return SUCCESS;
-	}
+	
 
 	@Action(value = "delete", results = { @Result(name = "success", type = "json") }, params = {
 			"contentType", "text/html" })
