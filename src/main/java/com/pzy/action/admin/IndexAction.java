@@ -26,7 +26,7 @@ public class IndexAction  extends ActionSupport{
 	@Autowired 
 	AdminUserService adminUserService;
 	/***
-	 * 后台登录首页
+	 * 库存跳转
 	 * @return
 	 */
 	@Action(value = "/kc/index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/kc/index.jsp") })

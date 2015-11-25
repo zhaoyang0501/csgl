@@ -19,13 +19,12 @@ import com.pzy.entity.AdminUser;
 import com.pzy.entity.Item;
 import com.pzy.entity.Order;
 import com.pzy.entity.Seller;
-import com.pzy.entity.User;
 import com.pzy.service.ItemService;
 import com.pzy.service.OrderService;
 import com.pzy.service.SellerService;
 /***
  * 订单管理
- * http://127.0.0.1:8080/tuangou/admin/order/index
+ * @author 263608237@qq.com
  *
  */
 @Namespace("/admin/order")

@@ -9,42 +9,6 @@
 
 <link>
 <script type="text/javascript">
-	$(function() {
-		$.ajax({
-			url : $.ims.getContextPath() + "/getDailyReportToApproveCount",
-			dataType : "json",
-			success : function(json) {
-				if (json.state)
-					$("#count_dailyReport").html(json.count);
-			}
-		});
-
-		$.ajax({
-			type : "GET",
-			url : $.ims.getContextPath() + "/getRemoteNews/1",
-			dataType : "json",
-			success : function(result) {
-				$("#book_manage_ui").empty();
-				$.each(result.news, function(i, n) {
-					$("#book_manage_ui").append(
-							"<li ><i  class='icon-hand-right'></i><a href='"+n.url+"' >"
-									+ n.title + "</a></li>");
-				});
-			}
-		});
-		$.ajax({
-			type : "GET",
-			url : $.ims.getContextPath() + "/getRemoteNews/2",
-			dataType : "json",
-			success : function(result) {
-				$("#discuzz_ui").empty();
-				$.each(result.news, function(i, n) {
-					$("#discuzz_ui").append(
-							"<li ><a href='"+n.url+"'><h5>"+ n.title + "</h5></a></li>");
-				});
-			}
-		});
-	});
 </script>
 </head>
 <body>

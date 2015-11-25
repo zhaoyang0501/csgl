@@ -18,7 +18,8 @@ import com.pzy.entity.Category;
 import com.pzy.service.CategoryService;
 
 /***
- * 后台分类管理 http://127.0.0.1:8080/tuangou/admin/category/index
+ * 
+ * @author 263608237@qq.com
  *
  */
 @Namespace("/admin/category")

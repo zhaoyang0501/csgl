@@ -26,8 +26,7 @@ import com.pzy.service.ItemService;
 import com.pzy.service.SellerService;
 
 /***
- * 后台商品管理 http://127.0.0.1:8080/tuangou/admin/item/index
- *
+ * @author 263608237@qq.com
  *
  */
 @Namespace("/admin/item")

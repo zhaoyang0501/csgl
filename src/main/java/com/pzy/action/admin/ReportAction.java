@@ -21,8 +21,7 @@ import com.pzy.service.ItemService;
 import com.pzy.service.OrderService;
 import com.pzy.service.SellerService;
 /***
- * 订单管理
- * http://127.0.0.1:8080/tuangou/admin/order/index
+ * @author 263608237@qq.com
  *
  */
 @Namespace("/admin/report")
@@ -64,22 +63,14 @@ public class ReportAction extends ActionSupport {
 	@Action(value = "sellreportlist", results = { @Result(name = "success", type = "json") }, params = {
 			"contentType", "text/html" })
 	public String sellreportlist() {
-		List<Order> orders = orderService.findAll("出库",begain,end);
 		List<Item> items = itemService.findAll();
 		List<String> dates=new ArrayList<String>();
 		List<Double> sells=new ArrayList<Double>();
 		List<Double> buys=new ArrayList<Double>();
-		List<Double> tmpmin=new ArrayList<Double>();
-		List<Double> aqi=new ArrayList<Double>();
-		List<Double> pm25=new ArrayList<Double>();
-		List<Double> sd=new ArrayList<Double>();
-		
 		for(Item bean:items){
 			dates.add(bean.getName());
 			sells.add(orderService.findPricesell(begain, end, bean.getId())==null?0:orderService.findPricesell(begain, end, bean.getId()));
 			buys.add(orderService.findPriceBuy(begain, end, bean.getId())==null?0:orderService.findPriceBuy(begain, end, bean.getId()));
-			/*sells.add(23d);
-			buys.add(11d);*/
 		}
 		resultMap.put("dates", dates);
 		resultMap.put("sells", sells);

@@ -17,7 +17,7 @@ import com.pzy.entity.Seller;
 import com.pzy.service.SellerService;
 /***
  * 供应商管理
- * http://127.0.0.1:8080/tuangou/admin/seller/index
+ * @author 263608237@qq.com
  *
  */
 @Namespace("/admin/seller")
